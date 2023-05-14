@@ -14,7 +14,12 @@
                 event.preventDefault();
                 const input = document.getElementById('input').value;
                 const result = count_vowels(input);
-                document.getElementById('output').textContent = result;
+                const output = document.getElementById('output');
+                if (output) {
+                    output.textContent = result;
+                } else {
+                    console.error('Output element not found');
+                }
             });
         }
 
@@ -28,19 +33,7 @@
         <button type="submit">Submit</button>
     </form>
     <p>Number of vowels: <span id="output"></span></p>
-
-    <script type="module">
-        import init from './pkg/vowel_counter.js';
-
-        async function main() {
-            await init();
-            const input = prompt("Enter a sentence:");
-            const result = count_vowels(input);
-            alert(`Number of vowels: ${result}`);
-        }
-
-        main();
-    </script>
 </body>
 </html>
+
 
